@@ -30,7 +30,7 @@ export function Home() {
       {/* GenZ / Editorial Hero Section */}
       <section className="relative min-h-[95vh] pt-24 pb-12 flex items-center overflow-hidden bg-surface">
         {/* Aesthetic Background Elements */}
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-40 mix-blend-overlay pointer-events-none"></div>
+        <div className="absolute inset-1 bg-[url('https://i.pinimg.com/1200x/3e/40/4c/3e404c715d72da023c844f12266cda3c.jpg')] opacity-40 mix-blend-overlay pointer-events-none"></div>
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[100px] -z-10 transform translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[80px] -z-10 transform -translate-x-1/4" />
         
@@ -102,7 +102,7 @@ export function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1610030469983-98e550d615ef?q=80&w=1200" 
+                  src="https://i.pinimg.com/736x/41/e0/aa/41e0aa9fcc1e7ebf9967f4617b8d446d.jpg" 
                   alt="Modern Saree Drape" 
                   className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-1000"
                 />
@@ -292,13 +292,13 @@ export function Home() {
             {[
               {
                 id: 1,
-                video: 'https://assets.mixkit.co/videos/preview/mixkit-woman-twirling-her-skirt-in-the-sun-34812-large.mp4',
+                video: 'https://pin.it/2391rzxRh',
                 title: 'Golden Silk Saree',
                 price: '₹6,200'
               },
               {
                 id: 2,
-                video: 'https://assets.mixkit.co/videos/preview/mixkit-girl-in-a-traditional-dress-spinning-34810-large.mp4',
+                video: 'https://pin.it/2391rzxRh',
                 title: 'Red Bridal Saree',
                 price: '₹12,500'
               },

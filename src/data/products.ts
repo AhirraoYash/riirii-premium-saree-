@@ -15,11 +15,11 @@ export interface Product {
 }
 
 export const CATEGORIES = [
-  { id: 'banarasi', name: 'Banarasi', image: 'https://i.pinimg.com/1200x/e0/3d/35/e03d35c1c76ede5881ace0e521404d3c.jpg' },
-  { id: 'silk', name: 'Pure Silk', image: 'https://i.pinimg.com/736x/a2/0f/e1/a20fe1d55b376e9cf476e257761469c1.jpg' },
-  { id: 'cotton', name: 'Cotton', image: 'https://i.pinimg.com/736x/e7/d0/db/e7d0dbda667a0aee4a586417ade797a0.jpg' },
-  { id: 'party', name: 'Party Wear', image: 'https://i.pinimg.com/1200x/65/83/71/658371dec9eedde8af51954e14866079.jpg' },
-  { id: 'wedding', name: 'Wedding', image: 'https://i.pinimg.com/1200x/f1/68/84/f16884e04eed5e6b85d9c0e36887c72d.jpg' },
+  { id: 'banarasi', name: 'Banarasi', image: 'https://images.unsplash.com/photo-1610030469983-98e550d615ef?q=80&w=800' },
+  { id: 'silk', name: 'Pure Silk', image: 'https://images.unsplash.com/photo-1583391733959-f183063618a0?q=80&w=800' },
+  { id: 'cotton', name: 'Cotton', image: 'https://images.unsplash.com/photo-1605763240000-7e93b172d754?q=80&w=800' },
+  { id: 'party', name: 'Party Wear', image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=800' },
+  { id: 'wedding', name: 'Wedding', image: 'https://images.unsplash.com/photo-1583391733959-f183063618a0?q=80&w=800' },
 ];
 
 export const PRODUCTS: Product[] = [
@@ -29,9 +29,9 @@ export const PRODUCTS: Product[] = [
     price: 4500,
     mrp: 9000,
     discount: 50,
-    image: 'https://i.pinimg.com/736x/a6/ea/6e/a6ea6e18f3f8afe81f0d6450fac7e632.jpg',
+    image: 'https://images.unsplash.com/photo-1610030469983-98e550d615ef?q=80&w=800',
     images: [
-      'https://i.pinimg.com/736x/51/3f/d5/513fd50a5822df9be1cc81e4c520f9b9.jpg',
+      'https://images.unsplash.com/photo-1610030469983-98e550d615ef?q=80&w=800',
       'https://images.unsplash.com/photo-1583391733959-f183063618a0?q=80&w=800'
     ],
     category: 'banarasi',
@@ -47,7 +47,7 @@ export const PRODUCTS: Product[] = [
     price: 6200,
     mrp: 12400,
     discount: 50,
-    image: 'https://i.pinimg.com/736x/d9/19/cf/d919cf7729964717567109cd3b54c40d.jpg',
+    image: 'https://images.unsplash.com/photo-1583391733959-f183063618a0?q=80&w=800',
     images: [
       'https://images.unsplash.com/photo-1583391733959-f183063618a0?q=80&w=800',
       'https://images.unsplash.com/photo-1610030469983-98e550d615ef?q=80&w=800'

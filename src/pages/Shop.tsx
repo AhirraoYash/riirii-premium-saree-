@@ -168,30 +168,6 @@ export function Shop() {
       </div>
 
       <FilterSection 
-        title="Categories" 
-        selectedCount={categoryFilter ? 1 : 0}
-        defaultOpen={true}
-      >
-        <div className="flex flex-col gap-2.5">
-          <button 
-            onClick={() => handleCategoryChange(null)}
-            className={`text-left text-sm transition-all duration-300 px-3 py-2 rounded-lg ${!categoryFilter ? 'bg-accent/10 text-accent font-bold' : 'text-muted-foreground hover:bg-muted/50 hover:text-primary'}`}
-          >
-            All Collections
-          </button>
-          {CATEGORIES.map(cat => (
-            <button 
-              key={cat.id}
-              onClick={() => handleCategoryChange(cat.id)}
-              className={`text-left text-sm transition-all duration-300 px-3 py-2 rounded-lg ${categoryFilter === cat.id ? 'bg-accent/10 text-accent font-bold' : 'text-muted-foreground hover:bg-muted/50 hover:text-primary'}`}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
-      </FilterSection>
-
-      <FilterSection 
         title="Price Range" 
         selectedCount={priceRange < MAX_PRICE ? 1 : 0}
         defaultOpen={true}
@@ -278,45 +254,71 @@ export function Shop() {
 
       <div className="container mx-auto px-4 relative z-10">
         
-        {/* Shop Header */}
+        {/* Category Image Filters */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 bg-surface/50 backdrop-blur-md p-8 rounded-[2rem] border border-white/40 shadow-sm"
+          className="mb-12 overflow-x-auto pb-6 hide-scrollbar"
         >
-          <div>
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-primary mb-3">
-              {categoryFilter ? CATEGORIES.find(c => c.id === categoryFilter)?.name : 'The Collection'}
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-xl">
-              Discover our meticulously curated selection of premium sarees, designed to elevate your elegance.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <button 
-              className="md:hidden flex items-center gap-2 px-5 py-3 bg-white border border-muted rounded-full shadow-sm text-sm font-medium text-primary"
-              onClick={() => setIsMobileFiltersOpen(true)}
+          <div className="flex items-center justify-start md:justify-center gap-6 md:gap-10 min-w-max px-4">
+            <button
+              onClick={() => handleCategoryChange(null)}
+              className={`flex flex-col items-center gap-4 group`}
             >
-              <Filter className="w-4 h-4" /> Filters
+              <div className={`w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden border-[3px] transition-all duration-500 ${!categoryFilter ? 'border-accent shadow-xl shadow-accent/20 scale-110' : 'border-transparent hover:border-accent/50'}`}>
+                <div className="w-full h-full bg-surface flex items-center justify-center text-primary font-serif text-xl md:text-2xl">
+                  All
+                </div>
+              </div>
+              <span className={`text-sm md:text-base font-medium transition-colors ${!categoryFilter ? 'text-accent font-bold' : 'text-muted-foreground group-hover:text-primary'}`}>
+                All Collections
+              </span>
             </button>
-            
-            <div className="relative group">
-              <select 
-                value={sortFilter}
-                onChange={handleSortChange}
-                className="appearance-none bg-white border border-muted rounded-full px-6 py-3 pr-12 text-sm font-medium text-primary shadow-sm outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all cursor-pointer"
+            {CATEGORIES.map(cat => (
+              <button
+                key={cat.id}
+                onClick={() => handleCategoryChange(cat.id)}
+                className={`flex flex-col items-center gap-4 group`}
               >
-                <option value="featured">Sort by: Featured</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="discount">Highest Discount</option>
-              </select>
-              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none group-hover:text-accent transition-colors" />
-            </div>
+                <div className={`w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden border-[3px] transition-all duration-500 ${categoryFilter === cat.id ? 'border-accent shadow-xl shadow-accent/20 scale-110' : 'border-transparent hover:border-accent/50'}`}>
+                  <img 
+                    src={cat.image} 
+                    alt={cat.name} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+                <span className={`text-sm md:text-base font-medium transition-colors ${categoryFilter === cat.id ? 'text-accent font-bold' : 'text-muted-foreground group-hover:text-primary'}`}>
+                  {cat.name}
+                </span>
+              </button>
+            ))}
           </div>
         </motion.div>
+
+        {/* Controls Bar */}
+        <div className="flex items-center justify-between md:justify-end mb-8 gap-4">
+          <button 
+            className="md:hidden flex items-center gap-2 px-5 py-3 bg-white border border-muted rounded-full shadow-sm text-sm font-medium text-primary"
+            onClick={() => setIsMobileFiltersOpen(true)}
+          >
+            <Filter className="w-4 h-4" /> Filters
+          </button>
+          
+          <div className="relative group">
+            <select 
+              value={sortFilter}
+              onChange={handleSortChange}
+              className="appearance-none bg-white border border-muted rounded-full px-6 py-3 pr-12 text-sm font-medium text-primary shadow-sm outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all cursor-pointer"
+            >
+              <option value="featured">Sort by: Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="discount">Highest Discount</option>
+            </select>
+            <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none group-hover:text-accent transition-colors" />
+          </div>
+        </div>
 
         <div className="flex flex-col md:flex-row gap-8 lg:gap-12">
           

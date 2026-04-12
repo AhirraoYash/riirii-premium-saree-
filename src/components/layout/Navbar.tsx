@@ -37,56 +37,35 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between relative">
           
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="md:hidden p-2 -ml-2 text-primary"
-            onClick={() => setIsMobileMenuOpen(true)}
-          >
-            <Menu className="w-6 h-6" />
-          </button>
-
-          {/* Logo */}
-          <Link to="/" className="flex-shrink-0 flex items-center gap-2">
-            <span className="font-serif text-2xl md:text-3xl font-bold tracking-tight text-primary">
-              Riirii<span className="text-accent">.</span>
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link to="/" className="text-sm uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors relative group">
-              Home
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link to="/shop" className="text-sm uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors relative group">
-              Shop All
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <div className="relative group">
-              <button className="text-sm uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors relative group flex items-center gap-1">
-                Categories
+          {/* Left Section: Mobile Menu & Collection Link */}
+          <div className="flex-1 flex items-center gap-4">
+            <button 
+              className="md:hidden p-2 -ml-2 text-primary"
+              onClick={() => setIsMobileMenuOpen(true)}
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+            <nav className="hidden md:flex items-center">
+              <Link to="/shop" className="text-sm uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors relative group">
+                Collection
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </button>
-              <div className="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                <div className="bg-surface shadow-xl rounded-none p-4 w-56 flex flex-col gap-2 border border-muted">
-                  {CATEGORIES.map(cat => (
-                    <Link 
-                      key={cat.id} 
-                      to={`/shop?category=${cat.id}`}
-                      className="text-sm uppercase tracking-wider text-muted-foreground hover:text-primary hover:bg-background px-3 py-2 transition-colors"
-                    >
-                      {cat.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </nav>
+              </Link>
+            </nav>
+          </div>
 
-          {/* Icons */}
-          <div className="flex items-center gap-2 md:gap-4">
+          {/* Center Section: Logo */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <Link to="/" className="flex-shrink-0 flex items-center gap-2">
+              <span className="font-serif text-2xl md:text-3xl font-bold tracking-tight text-primary">
+                Riirii<span className="text-accent">.</span>
+              </span>
+            </Link>
+          </div>
+
+          {/* Right Section: Icons */}
+          <div className="flex-1 flex items-center justify-end gap-2 md:gap-4">
             <button className="p-2 text-primary hover:text-accent transition-colors hidden sm:block">
               <Search className="w-5 h-5" />
             </button>
@@ -156,20 +135,7 @@ export function Navbar() {
             </div>
             
             <div className="flex flex-col gap-4">
-              <Link to="/" className="text-lg font-medium border-b border-muted pb-4">Home</Link>
-              <Link to="/shop" className="text-lg font-medium border-b border-muted pb-4">Shop All</Link>
-              <div className="flex flex-col gap-3 py-2">
-                <span className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">Categories</span>
-                {CATEGORIES.map(cat => (
-                  <Link 
-                    key={cat.id} 
-                    to={`/shop?category=${cat.id}`}
-                    className="text-base text-primary hover:text-accent"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
-              </div>
+              <Link to="/shop" className="text-lg font-medium border-b border-muted pb-4">Collection</Link>
             </div>
             
             <div className="mt-auto pt-8 border-t border-muted flex flex-col gap-4">
